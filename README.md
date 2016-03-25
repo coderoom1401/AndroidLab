@@ -9,7 +9,7 @@ Android 实验室：模拟算法的运行轨迹，
 
 ##用法
 ```xml
-<coderoom.jomeslu_lib.graphicalview
+<com.coderoom.jomeslu_lib.graphicalview
     android:id="@+id/videocontroller1"
     android:layout_width="match_parent"
     android:layout_height="200dp" />
