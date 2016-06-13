@@ -32,6 +32,27 @@ public class Bubblesort implements Sortable {
         }
     }
 }
+
+public void preload(){
+    MobVistaSDK sdk = MobVistaSDKFactory.getMobVistaSDK();
+    Map<String,Object> preloadMap = new HashMap<String,Object>();
+    preloadMap.put(MobVistaConstans.PROPERTIES_LAYOUT_TYPE, MobVistaConstans.LAYOUT_NATIVE);//广告样式
+    preloadMap.put(MobVistaConstans.ID_FACE_BOOK_PLACEMENT, "1611993839047594_1614040148842963");//fbid  
+    preloadMap.put(MobVistaConstans.ID_MY_TARGET_AD_UNITID, "6590");//MyTarget id
+    preloadMap.put(MobVistaConstans.PREIMAGE,true);//设置为true为预加载图片
+    preloadMap.put(MobVistaConstans.PROPERTIES_UNIT_ID, "12");//unit
+     //请求广告category,一共有2种分类：game和app，category不是必传参数
+    preloadMap.put(MobVistaConstans.PROPERTIES_API_REUQEST_CATEGORY,
+                MobVistaConstans.API_REUQEST_CATEGORY_APP);
+  //preloadMap.put(MobVistaConstans.PROPERTIES_API_REUQEST_CATEGORY,
+  //                MobVistaConstans.API_REUQEST_CATEGORY_GAME)
+    List<Template> list = new ArrayList<Template>();//为支持多模板需要添加的部分
+    list.add(new Template(MobVistaConstans.TEMPLATE_BIG_IMG, 1));//支持大图模板，每次获取1条
+    list.add(new Template(MobVistaConstans.TEMPLATE_MULTIPLE_IMG, 1));//支持多图模板，每次获取1条
+    String nativeInfo =  MvNativeHandler.getTemplateString(list);//将native_info参数传入
+    preloadMap.put(MobVistaConstans.NATIVE_INFO, nativeInfo);
+    sdk.preload(preloadMap);
+}
 ```
 ## Android 博客周刊
 请关注[Android博客周刊](http://www.androidblog.cn/) 。优质、精简Android博客周刊。每周一准时更新。
